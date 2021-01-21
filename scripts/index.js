@@ -42,7 +42,7 @@ console.log(trumpInventory.calculatePlayerDefence());
 
 export { game, kim, trump, kimInventory, trumpInventory }
 
-Interface.fullfillRocketsInventory();
+// Interface.fullfillRocketsInventory();
 
 AddEventListener.ToStartButton();
 AddEventListener.AllListeners();

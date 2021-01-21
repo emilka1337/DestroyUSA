@@ -63,11 +63,11 @@ export default class Game {
         Interface.displayMoney(kim.money);
         Interface.displayIncome(kim.income);
         Interface.showPlayersHP();
-        // Interface.changeKimHP(this._kimHealth);
-        // Interface.changeTrumpHP(this._trumpHealth);
         
         Interface.changeKimHP(kim.health);
         Interface.changeTrumpHP(trump.health);
+
+        Interface.fullfillRocketsInventory();
 
         setInterval(() => {
             // this._processIncome(), 1000);
@@ -94,9 +94,4 @@ export default class Game {
         this._checkForWin();
         this._checkForLose();
     }
-
-    // _processIncome() {
-    //     this._money += this._income;
-    //     Interface.displayMoney(this._money);
-    // }
 }

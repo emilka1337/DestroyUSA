@@ -1,5 +1,7 @@
 "use strict";
 
+import Interface from "../interface";
+
 export default class Player {
     constructor(player) {
         this._name = player.name || "Unknown Player";
@@ -77,9 +79,11 @@ export default class Player {
     }
     //#endregion
 
-    _processIncome() {
+    processIncome() {
         this._money += this._income;
-        // Interface.displayMoney(this._money);
+        if (this._name == "Kim") {
+            Interface.displayMoney(this._money);
+        }
     }
 
     calculateDefence() {
