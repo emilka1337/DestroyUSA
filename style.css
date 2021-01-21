@@ -1,0 +1,137 @@
+html,
+body {
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    color: #ffffff;
+}
+
+#siteContainer {
+    height: 100%;
+}
+
+#siteHeader {
+    height: 25%;
+    position: relative;
+}
+
+#gameMoney {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#gameIncome {
+    position: absolute;
+    right: 10px;
+    top: 45px;
+}
+
+#startGame {
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    background-color: crimson;
+    /* background-color: lime; */
+}
+
+#siteMain {
+    height: 65%;
+}
+
+.players-hp {
+    display: none;
+
+}
+
+.hp-container {
+    width: 200px;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+.hp {
+    height: 10px;
+    width: 100%;
+    background-color: red;
+    transition: 500ms ease;
+}
+
+#bigButton {
+    border-radius: 100%;
+    background-color: crimson;
+    width: 290px;
+    height: 290px;
+    transition: 200ms;
+    cursor: pointer;
+}
+
+#bigButton:hover {
+    background-color: rgb(175, 18, 49);
+    width: 300px;
+    height: 300px;
+}
+
+#bigButton:hover h1 {
+    color: gold;
+}
+
+#bigButton:active {
+    box-shadow: #000000 0px 0px 20px 10px;
+}
+
+#bigButton h1::selection {
+    background-color: #00000000;
+}
+
+#bigButton:nth-child(0) {
+    font-weight: 500;
+}
+
+#siteFooter {
+    height: 10%;
+}
+
+#footerButtons {
+    gap: 10px;
+}
+
+#inventoryContainer {
+    position: absolute;
+    right: 50px;
+    height: 700px;
+    width: 100%;
+    top: 50px;
+    background-color: white;
+    /* opacity: 0.9; */
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#inventoryContainer div h1 {
+    color: black;
+}
+
+#closeInventoryTab {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#closeInventoryTab h1 {
+    margin: 0;
+    cursor: pointer;
+}
+
+#rocketsInventory {
+    height: 600px;
+    overflow: auto;
+    gap: 7%;
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destroy USA!!!</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+    <script defer src="./bootstrap/jquery-compressed.js"></script>
+    <script defer src="./bootstrap/bootstrap.min.js"></script>
+    <script defer src="./bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- Styles and scripts -->
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="dist/bundle.js"></script>
+</head>
+
+<body class="bg-dark">
+    <div id="siteContainer" class="container-fluid">
+        <header id="siteHeader" class="row">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="container">
+                        <h1>Destroy USA!!!</h1>
+                        <h2 id="gameScore">Score</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <button id="startGame" class="btn btn-danger">Start game🔥</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="gameMoney">Money</h3>
+            <h5 id="gameIncome">Income</h5>
+        </header>
+
+        <main id="siteMain" class="row">
+            <!-- Game Container -->
+            <div class="row w-100 d-flex justify-content-center">
+                <!-- Trump Container -->
+                <div class="container col-md-3 text-center">
+                    <!-- <h1>Trump photo</h1> -->
+                    <div class="row">
+                        <div class="container">
+                            <img src="./img/Trump1.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="row players-hp">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12 d-flex justify-content-center mt-2">
+                                    <div id="trumpHpContainer" class="hp-container d-flex justify-content-start">
+                                        <div id="trumpHPGraph" class="hp"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 id="trumpHP">100</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Big Red Button -->
+                <div class="container col-md-6 d-flex justify-content-center align-items-center">
+                    <div id="bigButton" class="d-flex justify-content-center align-items-center">
+                        <h1>LAUNCH!!!</h1>
+                    </div>
+                </div>
+
+                <!-- Kim Container -->
+                <div class="container col-md-3 text-center">
+                    <!-- <h1>Kim photo</h1> -->
+                    <div class="row">
+                        <div class="container">
+                            <img src="./img/Kim1.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="row players-hp">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12 d-flex justify-content-center mt-2">
+                                    <div id="kimHpContainer" class="hp-container d-flex justify-content-start">
+                                        <div id="kimHPGraph" class="hp">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 id="kimHP">100</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <div id="inventoryContainer" class="container col-md-11 d-none">
+            <header class="row">
+                <div class="container d-flex justify-content-center">
+                    <h1 class="text-dark">Inventory</h1>
+                </div>
+            </header>
+            <main id="inventory" class="row">
+                <div class="container-fluid">
+                    <div class="container">
+                        <div id="closeInventoryTab">
+                            <h1>X</h1>
+                        </div>
+
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="rockets-inventory-tab" data-toggle="tab"
+                                    href="#rockets-inventory" role="tab" aria-controls="rockets-inventory"
+                                    aria-selected="true">Rockets</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="air-defence-inventory-tab" data-toggle="tab"
+                                    href="#air-defence-inventory" role="tab" aria-controls="air-defence-inventory"
+                                    aria-selected="false">Air Defence</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="buildings-inventory-tab" data-toggle="tab"
+                                    href="#buildings-inventory" role="tab" aria-controls="buildings-inventory"
+                                    aria-selected="false">Buildings</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="rockets-inventory" role="tabpanel"
+                                aria-labelledby="rockets-inventory-tab">
+                                <div id="rocketsInventory" class="container d-flex flex-wrap justify-content-start">
+                                    <!--Rockets will appear here-->
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="air-defence-inventory" role="tabpanel"
+                                aria-labelledby="air-defence-inventory-tab">
+                                <div class="container">
+                                    <h1>Air Defence coming soon...</h1>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="buildings-inventory" role="tabpanel"
+                                aria-labelledby="buildings-inventory-tab">
+                                <div class="container">
+                                    <h1>
+                                        Buildings will coming soon...
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer id="siteFooter" class="row">
+            <div class="container-fluid d-flex justify-content-end ">
+                <div id="footerButtons" class="col-md-6 d-flex justify-content-end align-items-end px-0">
+                    <button id="inventoryButton" class="btn btn-warning mb-2">Inventory</button>
+                    <button id="settingsButton" class="btn btn-warning mb-2">Settings</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
