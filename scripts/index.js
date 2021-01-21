@@ -16,7 +16,7 @@ let kim = new Player({
     name: "Kim", 
     money: 1e6, 
     score: 0, 
-    health: 100, 
+    health: 50, 
     defence: 0,
     inventory: kimInventory
 });
@@ -24,7 +24,7 @@ let trump = new Player({
     name: "Trump", 
     money: 1e6, 
     score: 0, 
-    health: 100, 
+    health: 50, 
     defence: 0,
     inventory: trumpInventory
 });
@@ -41,8 +41,6 @@ console.log(kimInventory.calculatePlayerDefence());
 console.log(trumpInventory.calculatePlayerDefence());
 
 export { game, kim, trump, kimInventory, trumpInventory }
-
-// Interface.fullfillRocketsInventory();
 
 AddEventListener.ToStartButton();
 AddEventListener.AllListeners();

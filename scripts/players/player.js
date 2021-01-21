@@ -5,12 +5,12 @@ import Interface from "../interface";
 export default class Player {
     constructor(player) {
         this._name = player.name || "Unknown Player";
+        this._health = player.health || 100;
         this._money = player.money || 1e6;
         this._score = player.score || 0;
         this._income = player.income || 100;
         this._defence = player.defence || 0;
         this._inventory = player.inventory;
-        this._health = 100;
     }
 
     //#region Getters and Setters
@@ -31,7 +31,7 @@ export default class Player {
     }
 
     get score() {
-        return this._income;
+        return this._score;
     }
 
     set score(value) {
