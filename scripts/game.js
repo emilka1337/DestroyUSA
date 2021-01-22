@@ -5,7 +5,13 @@ import Interface from "./interface";
 import Progress from './progress';
 
 export default class Game {
+    constructor() {
+        this.gameStarted = false;
+    }
+
     startGame() {
+        this.gameStarted = true;
+        
         // Progress.autoLoadGame();
 
         Interface.hideStartButton();

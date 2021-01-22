@@ -80,6 +80,7 @@ export default class Interface {    // Работа с интерфейсом и
         let card = document.createElement('div');
         card.className = 'card my-3';
         card.style.width = '18rem';
+        // card.id = rocket.inventoryId;
 
         let img = document.createElement('img');
         img.src = rocket.imgSrc;
@@ -152,11 +153,20 @@ export default class Interface {    // Работа с интерфейсом и
         document.getElementById('rocketsInventory').innerHTML = '';
 
         let rockets = kimInventory.rockets;
+        // let rockets = Array.from(kimInventory.rockets);
+        // console.log(rockets);
 
         for (let i in rockets) {
             let rocket = rockets[i];
+            rocket.inventoryId = `rocketInventoryId-${i}`;
             document.getElementById('rocketsInventory').appendChild(this.createRocketStoreCard(rocket));
         }
+
+        // for (let i = 0; i < Array.from(rockets).length; i++) {
+        //     let rocket = rockets[i];
+        //     rocket.inventoryId = `rocketInventoryId-${i}`;
+        //     document.getElementById('rocketsInventory').appendChild(this.createRocketStoreCard(rocket));
+        // }
     }
 
     static changeRocketCountInStore(buyButton, count) {
