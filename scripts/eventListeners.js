@@ -1,9 +1,11 @@
 'use strict';
-import {game, kimInventory} from './index';
+import { game, kimInventory } from './index';
 import Interface from './interface';
 
 export default class AddEventListener {
     static AllListeners() {
+        this.ToStartButton();
+        this.ToStartInInventoryButton();
         this.ToLaunchButton();
         this.ToToggleInventoryButton();
         this.ToCloseInventoryButton();
@@ -13,6 +15,13 @@ export default class AddEventListener {
         document.getElementById('startGame').addEventListener('click', () => {
             game.startGame();
         });
+    }
+
+    static ToStartInInventoryButton() {
+        document.getElementById('rocketsInventoryStartGame').addEventListener('click', () => {
+            game.startGame();
+            Interface.hideInventory();
+        })
     }
 
     static ToLaunchButton() {

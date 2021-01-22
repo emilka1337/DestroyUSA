@@ -136,6 +136,11 @@ p {
     gap: 7%;
 }
 
+#rocketsInventory h3 span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 #selectedRocket span {
     color: yellow;
 }

@@ -29,20 +29,13 @@ let trump = new Player({
     inventory: trumpInventory
 });
 
-kimInventory.airDefence.simpleAirDefence.buy();
-kimInventory.airDefence.simpleAirDefence.buy();
-kimInventory.airDefence.simpleAirDefence.buy();
-
 console.log(kim);
 console.log(trump);
 console.log(kimInventory);
 console.log(trumpInventory);
-console.log(kimInventory.calculatePlayerDefence());
-console.log(trumpInventory.calculatePlayerDefence());
 
 export { game, kim, trump, kimInventory, trumpInventory }
 
 Interface.changeSelectedRocket(kimInventory.selectedRocket.title, kimInventory.selectedRocket.count);
 
-AddEventListener.ToStartButton();
 AddEventListener.AllListeners();

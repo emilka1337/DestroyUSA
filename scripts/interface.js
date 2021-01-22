@@ -132,7 +132,10 @@ export default class Interface {    // Работа с интерфейсом и
         buyButton.style.color = '#fff';
         selectButton.onclick = () => rocket.select();
 
-        rocket.relativeUseButton = selectButton;
+        /* Задаёт свойство со ссылкой на Node-елемент кнопки выбора ракеты и служит для того, 
+        чтобы относительно неё находить путь до пункта с количеством 
+        в карточке ракеты в магазине. ЖЕСТОКИЙ КОСТЫЛЬ, ИСПРАВИТЬ!!!*/
+        rocket.relativeSelectButton = selectButton;
         // console.log(rocket);
 
         card.appendChild(img);
@@ -169,6 +172,8 @@ export default class Interface {    // Работа с интерфейсом и
         // }
     }
 
+    /* Метод, меняющий количество ракет в карточке. 
+    Ищет поле с количеством, отталкиваясь от кнопки "Buy" в карточке */
     static changeRocketCountInStore(buyButton, count) {
         buyButton.parentElement.parentElement.children[4].innerHTML = `<b>You have: </b> ${count}`;
     }

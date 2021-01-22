@@ -22,7 +22,7 @@ export default class Rocket {                       // Базовый класс
     }
 
     set count(count) {
-        if (count >= 0 && typeof(count) == 'number') {
+        if (count >= 0 && typeof (count) == 'number') {
             this._count = count;
         } else {
             throw new Error(`Rockets count can't be less than 0`);
@@ -67,14 +67,14 @@ export default class Rocket {                       // Базовый класс
         }
     }
 
-    use(relativeUseButton) {                                               // ПОКА МЕТОД МОЖЕТ УМЕНЬШАТЬ ТОЛЬКО ЗДОРОВЬЕ ТРАМПА!!!!
+    use() {                                               // ПОКА МЕТОД МОЖЕТ УМЕНЬШАТЬ ТОЛЬКО ЗДОРОВЬЕ ТРАМПА!!!!
         try {
             this.count -= 1;
             console.log(this);
 
-                Interface.changeRocketCountInStore(this.relativeUseButton, this._count);
-                Interface.changeSelectedRocket(this._title, this._count);
-                
+            Interface.changeRocketCountInStore(this.relativeSelectButton, this._count);
+            Interface.changeSelectedRocket(this._title, this._count);
+
             if (Math.random() < this._accuracy) {
 
                 /*Расчёт урона*/
@@ -82,7 +82,7 @@ export default class Rocket {                       // Базовый класс
 
                 if (critChance <= 0.1) {
                     if (critChance <= 0.05) {
-                        if (critChance <= 0.01) {               
+                        if (critChance <= 0.01) {
                             trump.health <= this._damage * 5;   // Крит (шанс 1%), множитель урона 5х
                         } else {
                             trump.health -= this._damage * 4;   // Крит (шанс 5%), множитель урона 4х

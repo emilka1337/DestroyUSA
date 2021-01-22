@@ -32,79 +32,76 @@
                 </div>
             </div>
 
-            <h3 id="gameMoney">Money</h3>
+            <h3 id="gameMoney" class="user-select-all">Money</h3>
             <h5 id="gameIncome">Income</h5>
         </header>
 
         <main id="siteMain" class="row">
-            <!-- Game Container -->
-            <div class="row w-100 d-flex justify-content-center">
-                <!-- Trump Container -->
-                <div class="container col-md-3 text-center">
-                    <!-- <h1>Trump photo</h1> -->
-                    <div class="row">
-                        <div class="container">
-                            <img src="./img/Trump1.jpg" alt="">
+            <!-- Trump Container -->
+            <div class="container col-md-3 text-center">
+                <!-- <h1>Trump photo</h1> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="shadow-lg" src="./img/Trump1.jpg" alt="" style="width: 250px;">
+                    </div>
+                </div>
+
+                <div class="row players-hp">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center mt-2">
+                                <div id="trumpHpContainer" class="hp-container d-flex justify-content-start">
+                                    <div id="trumpHPGraph" class="hp"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 id="trumpHP">100</h5>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="row players-hp">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12 d-flex justify-content-center mt-2">
-                                    <div id="trumpHpContainer" class="hp-container d-flex justify-content-start">
-                                        <div id="trumpHPGraph" class="hp"></div>
+            <!-- Big Red Button -->
+            <div class="container col-md-6 d-flex flex-column justify-content-center align-items-center">
+                <div id="bigButton" class="d-flex justify-content-center align-items-center">
+                    <h1>LAUNCH!!!</h1>
+                </div>
+                <h5 id="selectedRocket" class="my-4"></h5>
+            </div>
+
+            <!-- Kim Container -->
+            <div class="container col-md-3 text-center">
+                <!-- <h1>Kim photo</h1> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="shadow-lg" src="./img/Kim1.jpg" alt="" style="width: 250px;">
+                    </div>
+                </div>
+
+                <div class="row players-hp">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center mt-2">
+                                <div id="kimHpContainer" class="hp-container d-flex justify-content-start">
+                                    <div id="kimHPGraph" class="hp">
+
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 id="trumpHP">100</h5>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 id="kimHP">100</h5>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Big Red Button -->
-                <div class="container col-md-6 d-flex flex-column justify-content-center align-items-center">
-                    <div id="bigButton" class="d-flex justify-content-center align-items-center">
-                        <h1>LAUNCH!!!</h1>
-                    </div>
-                    <h5 id="selectedRocket" class="my-4"></h5>
-                </div>
-
-                <!-- Kim Container -->
-                <div class="container col-md-3 text-center">
-                    <!-- <h1>Kim photo</h1> -->
-                    <div class="row">
-                        <div class="container">
-                            <img src="./img/Kim1.jpg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="row players-hp">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12 d-flex justify-content-center mt-2">
-                                    <div id="kimHpContainer" class="hp-container d-flex justify-content-start">
-                                        <div id="kimHPGraph" class="hp">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 id="kimHP">100</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </main>
 
@@ -118,7 +115,9 @@
                 <div class="container-fluid">
                     <div class="container">
                         <div id="closeInventoryTab">
-                            <h1>X</h1>
+                            <button type="button" class="close" aria-label="Close">
+                                <span aria-hidden="true" style="font-size: 40px;">&times;</span>
+                            </button>
                         </div>
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -144,7 +143,8 @@
                                 aria-labelledby="rockets-inventory-tab">
                                 <div id="rocketsInventory" class="container d-flex flex-wrap justify-content-start">
                                     <!--Rockets will appear here-->
-                                    <h3 class="text-dark text-center">You need to <span class="text-danger">start the game</span> before you can buy something!</h3>
+                                    <h3 class="text-dark text-center">You need to <span id="rocketsInventoryStartGame"
+                                            class="text-danger">start the game</span> before you can buy something!</h3>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="air-defence-inventory" role="tabpanel"
