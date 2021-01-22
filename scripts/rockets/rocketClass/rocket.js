@@ -1,6 +1,6 @@
 'use strict'
 
-import { game } from "../..";
+import { game, kim, kimInventory, trump } from "../..";
 import Interface from "../../interface";
 
 import TrumpPhrases from "../../trumpPhrases/trumpPhrases";
@@ -56,37 +56,46 @@ export default class Rocket {                       // Базовый класс
 
     buy(relativeBuyButton) {
         try {
-            game.money -= this._price;
-            Interface.displayMoney(game.money);
+            kim.money -= this._price;
+            Interface.displayMoney(kim.money);
             this.count += 1;
+            console.log(this);
             Interface.changeRocketCountInStore(relativeBuyButton, this._count);
+            this.select();
         } catch {
             alert(`Not enough money to buy this weaphon! You need at least ${this._price}$`);
         }
     }
 
-    use() {
+    use(relativeUseButton) {                                               // ПОКА МЕТОД МОЖЕТ УМЕНЬШАТЬ ТОЛЬКО ЗДОРОВЬЕ ТРАМПА!!!!
         try {
             this.count -= 1;
+            console.log(this);
 
+                Interface.changeRocketCountInStore(this.relativeUseButton, this._count);
+                Interface.changeSelectedRocket(this._title, this._count);
+                
             if (Math.random() < this._accuracy) {
 
                 /*Расчёт урона*/
                 let critChance = Math.random();
+
                 if (critChance <= 0.1) {
                     if (critChance <= 0.05) {
-                        if (critChance <= 0.01) {
-                            game.trumpHealth <= this._damage * 5;   // Крит (шанс 1%), множитель урона 5х
+                        if (critChance <= 0.01) {               
+                            trump.health <= this._damage * 5;   // Крит (шанс 1%), множитель урона 5х
                         } else {
-                            game.trumpHealth -= this._damage * 4;   // Крит (шанс 5%), множитель урона 4х
+                            trump.health -= this._damage * 4;   // Крит (шанс 5%), множитель урона 4х
                         }
                     } else {
-                        game.trumpHealth -= this._damage * 3;   // Крит (шанс 10%), множитель урона 3х
+                        trump.health -= this._damage * 3;   // Крит (шанс 10%), множитель урона 3х
                     }
                 } else {
-                    game.trumpHealth -= this._damage;       // Стандартный урон без крита
+                    trump.health -= this._damage;       // Стандартный урон без крита
                 }
                 /*Расчёт урона окончен*/
+
+                Interface.changeTrumpHP(trump.health);
 
                 setTimeout(() => alert(TrumpPhrases.GenerateAngerPhrase()), 500);
                 return true;
@@ -94,9 +103,16 @@ export default class Rocket {                       // Базовый класс
                 alert(TrumpPhrases.GenerateHappyPhrase());
                 return false;
             }
-        } catch {
+        }
+        catch {
             alert("You have no that type of rockets!");
             return false;
         }
+    }
+
+    select() {
+        kimInventory.selectedRocket = this;
+        Interface.changeSelectedRocket(this._title, this._count);
+        console.log(this);
     }
 }

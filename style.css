@@ -135,3 +135,7 @@ p {
     overflow: auto;
     gap: 7%;
 }
+
+#selectedRocket span {
+    color: yellow;
+}

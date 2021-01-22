@@ -24,6 +24,7 @@ export default class Inventory {                    // Класс основно
             simpleAirDefence: new SimpleAirDefence(0), 
             advancedAirDefence: new AdvancedAirDefence(0)
         };
+        this._selectedRocket = this._rockets.simpleRocket;
     }
 
     //#region Getters and Setters
@@ -49,6 +50,16 @@ export default class Inventory {                    // Класс основно
 
     get name() {
         return this._name;
+    }
+
+    get selectedRocket() {
+        return this._selectedRocket;
+    }
+
+    set selectedRocket(rocket) {
+        if (typeof(rocket) == 'object' && rocket.use) {
+            this._selectedRocket = rocket;
+        }
     }
     //#endregion
 

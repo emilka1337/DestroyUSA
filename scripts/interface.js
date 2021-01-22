@@ -115,12 +115,24 @@ export default class Interface {    // Работа с интерфейсом и
         youHave.style.marginBottom = '5px';
         youHave.innerHTML = `<b>You have: </b> ${rocket.count}`;
 
+        let buttons = document.createElement('div');
+        buttons.className = 'd-flex justify-content-around'
+        buttons.style.justifySelf = 'flex-end';
+
         let buyButton = document.createElement('a');
-        buyButton.className = 'btn btn-primary';
+        buyButton.className = 'btn btn-primary col-md-5';
         buyButton.innerText = `${rocket.price}$`;
         buyButton.style.color = '#fff';
-        buyButton.style.justifySelf = 'flex-end';
         buyButton.onclick = () => rocket.buy(buyButton);
+
+        let selectButton = document.createElement('a');
+        selectButton.className = 'btn btn-danger col-md-5';
+        selectButton.innerText = `Select`;
+        buyButton.style.color = '#fff';
+        selectButton.onclick = () => rocket.select();
+
+        rocket.relativeUseButton = selectButton;
+        // console.log(rocket);
 
         card.appendChild(img);
         card.appendChild(cardBody);
@@ -129,12 +141,16 @@ export default class Interface {    // Работа с интерфейсом и
         cardBody.appendChild(damage);
         cardBody.appendChild(accuracy);
         cardBody.appendChild(youHave);
-        cardBody.appendChild(buyButton);
+        cardBody.appendChild(buttons);
+        buttons.appendChild(buyButton);
+        buttons.appendChild(selectButton);
 
         return card;
     }
 
     static fullfillRocketsInventory() {
+        document.getElementById('rocketsInventory').innerHTML = '';
+
         let rockets = kimInventory.rockets;
 
         for (let i in rockets) {
@@ -144,7 +160,11 @@ export default class Interface {    // Работа с интерфейсом и
     }
 
     static changeRocketCountInStore(buyButton, count) {
-        buyButton.parentElement.children[4].innerHTML = `<b>You have: </b> ${count}`;
+        buyButton.parentElement.parentElement.children[4].innerHTML = `<b>You have: </b> ${count}`;
+    }
+
+    static changeSelectedRocket(title, count) {
+        document.getElementById('selectedRocket').innerHTML = `Selected: <span>${title} (x${count})</span>`;
     }
     //#endregion
 }

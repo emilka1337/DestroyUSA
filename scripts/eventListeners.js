@@ -17,7 +17,8 @@ export default class AddEventListener {
 
     static ToLaunchButton() {
         document.getElementById('bigButton').addEventListener('click', () => {
-            kimInventory.rockets.smallNuclearBomb.use();
+            // kimInventory.rockets.smallNuclearBomb.use();
+            kimInventory.selectedRocket.use();
         })
     }
 

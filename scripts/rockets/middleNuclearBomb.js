@@ -13,6 +13,6 @@ export default class MiddleNuclearBomb extends Rocket {
             description: 'Nuclear bomb that has slightly more damage and accuracy',
             imgSrc: './img/rockets/MiddleNuclearBomb.png'
         });
-        this._count = count
+        this._count = count;
     }
 }
