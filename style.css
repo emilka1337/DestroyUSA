@@ -144,3 +144,9 @@ p {
 #selectedRocket span {
     color: yellow;
 }
+
+#noRocketsAlertContainer {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}

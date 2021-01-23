@@ -96,16 +96,20 @@ export default class Rocket {                       // Базовый класс
                 /*Расчёт урона окончен*/
 
                 Interface.changeTrumpHP(trump.health);
+                Interface.createPopup(`<b>Trump: </b>${TrumpPhrases.GenerateAngerPhrase()}`, 'danger');
+                // setTimeout(() => alert(TrumpPhrases.GenerateAngerPhrase()), 500);
 
-                setTimeout(() => alert(TrumpPhrases.GenerateAngerPhrase()), 500);
                 return true;
             } else {
-                alert(TrumpPhrases.GenerateHappyPhrase());
+                // alert(TrumpPhrases.GenerateHappyPhrase());
+                Interface.createPopup(`<b>Trump: </b>${TrumpPhrases.GenerateHappyPhrase()}`, 'danger');
                 return false;
             }
         }
         catch {
-            alert("You have no that type of rockets!");
+            // alert("You have no that type of rockets!");
+            Interface.createPopup('You have <b>NO</b> that type of rockets!', 'info');
+            // $('.noRocketsAlert').alert();
             return false;
         }
     }

@@ -182,4 +182,34 @@ export default class Interface {    // Работа с интерфейсом и
         document.getElementById('selectedRocket').innerHTML = `Selected: <span>${title} (x${count})</span>`;
     }
     //#endregion
+
+    static createPopup(alertText, color = 'info', autoCloseMS = 3000) {
+        let alert = document.createElement('div');
+        alert.className = `alert alert-${color} alert-dismissible fade show`;
+        alert.id = 'noRocketsAlert';
+        alert.style.transition = '200ms';
+
+        let p = document.createElement('p');
+        p.innerHTML = alertText;
+        p.style.color = 'inherit';
+
+        let close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'close';
+        close.setAttribute('data-dismiss', 'alert')
+        close.setAttribute('aria-label', 'Close');
+        close.style.outline = 'none';
+
+        let span = document.createElement('span');
+        span.innerHTML = '&times;';
+        span.setAttribute('aria-hidden', 'true');
+
+        alert.appendChild(p);
+        alert.appendChild(close);
+        close.appendChild(span);
+
+        document.getElementById('noRocketsAlertContainer').appendChild(alert);
+
+        setTimeout(() => close.click(), autoCloseMS);
+    }
 }
