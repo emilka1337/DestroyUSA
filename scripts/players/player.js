@@ -10,7 +10,7 @@ export default class Player {
         this._score = player.score || 0;
         this._income = player.income || 100;
         this._defence = player.defence || 0;
-        this._inventory = player.inventory;
+        this.inventory = player.inventory;
     }
 
     //#region Getters and Setters
@@ -74,7 +74,8 @@ export default class Player {
         if (value >= 0 && typeof (value) == 'number') {
             this._health = value;
         } else {
-            throw new Error("Defence can't be less than 0");
+            // throw new Error("Health can't be less than 0");
+            this._health = 0;
         }
     }
     //#endregion
@@ -82,11 +83,11 @@ export default class Player {
     processIncome() {
         this._money += this._income;
         if (this._name == "Kim") {
-            Interface.displayMoney(this._money);
+            Interface.displayMoney(this.money);
         }
     }
 
     calculateDefence() {
-        this._defence = this._inventory.calculatePlayerDefence();
+        this._defence = this.inventory.calculatePlayerDefence();
     }
 }

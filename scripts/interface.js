@@ -183,6 +183,7 @@ export default class Interface {    // Работа с интерфейсом и
     }
     //#endregion
 
+    //#region Notifications and Popups
     static createPopup(alertText, color = 'info', autoCloseMS = 3000) {
         let alert = document.createElement('div');
         alert.className = `alert alert-${color} alert-dismissible fade show`;
@@ -209,7 +210,9 @@ export default class Interface {    // Работа с интерфейсом и
         close.appendChild(span);
 
         document.getElementById('noRocketsAlertContainer').appendChild(alert);
-
-        setTimeout(() => close.click(), autoCloseMS);
+        
+        // Если дать в параметрах таймаут 0, то попап будет 'бесконечным', а если не дать ничего, то 3 секунды
+        setTimeout(() => close.click(), autoCloseMS || 3600000);
     }
+    //#endregion
 }

@@ -14,7 +14,7 @@ let trumpInventory = new Inventory("Trump");
 
 let kim = new Player({
     name: "Kim", 
-    money: 1e6, 
+    money: 1e8, 
     score: 0, 
     health: 100, 
     defence: 0,

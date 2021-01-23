@@ -20,18 +20,19 @@ export default class AddEventListener {
     static ToStartInInventoryButton() {
         document.getElementById('rocketsInventoryStartGame').addEventListener('click', () => {
             game.startGame();
-            Interface.hideInventory();
         })
     }
 
     static ToLaunchButton() {
         document.getElementById('bigButton').addEventListener('click', () => {
-            if (game.gameStarted) {
+            if (game.gameStarted && !game.gameOver) {
                 kimInventory.selectedRocket.use();
-            } else {
-                alert('Not so fast! Press "Start Game" button firts :D');
+            } else if (!game.gameStarted) {
+                Interface.createPopup('Not so fast! Press <b>Start Game</b> firts :D', 'info');
+            } else if (game.gameOver) {
+                Interface.createPopup('Kimmy, calm down!\n<b>Game</b> is already <b>over</b>! :D', 'success', 0);
             }
-        })
+        });
     }
 
     static ToToggleInventoryButton() {
