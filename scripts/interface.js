@@ -184,15 +184,36 @@ export default class Interface {    // Работа с интерфейсом и
     //#endregion
 
     //#region Notifications and Popups
-    static createPopup(alertText, color = 'info', autoCloseMS = 3000) {
+    static createPopup(params = { text, color, imgWidth, imgSrc, timeout }) {
+
+        let popup = {
+            color: 'info',
+            text: '',
+            imgSrc: '',
+            imgWidth: '100px',
+            timeout: 3000
+        };
+
+        Object.assign(popup, params);
+
         let alert = document.createElement('div');
-        alert.className = `alert alert-${color} alert-dismissible fade show`;
+        alert.className = `alert alert-${popup.color} alert-dismissible fade show`;
         alert.id = 'noRocketsAlert';
         alert.style.transition = '200ms';
 
+        let div = document.createElement('div');
+        // div.className = 'd-flex';
+
         let p = document.createElement('p');
-        p.innerHTML = alertText;
+        p.innerHTML = popup.text;
+        p.className = 'float-left';
         p.style.color = 'inherit';
+        p.style.width = '200px';
+
+        let img = document.createElement('img');
+        img.src = popup.imgSrc;
+        img.className = 'float-right';
+        img.style.width = popup.imgWidth;
 
         let close = document.createElement('button');
         close.type = 'button';
@@ -205,14 +226,16 @@ export default class Interface {    // Работа с интерфейсом и
         span.innerHTML = '&times;';
         span.setAttribute('aria-hidden', 'true');
 
-        alert.appendChild(p);
+        alert.appendChild(div);
+        div.appendChild(p);
+        popup.imgSrc ? div.appendChild(img) : undefined;
         alert.appendChild(close);
         close.appendChild(span);
 
-        document.getElementById('noRocketsAlertContainer').appendChild(alert);
-        
+        document.getElementById('alertContainer').appendChild(alert);
+
         // Если дать в параметрах таймаут 0, то попап будет 'бесконечным', а если не дать ничего, то 3 секунды
-        setTimeout(() => close.click(), autoCloseMS || 3600000);
+        setTimeout(() => close.click(), popup.timeout || 3600000);
     }
     //#endregion
 }

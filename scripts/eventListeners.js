@@ -28,9 +28,15 @@ export default class AddEventListener {
             if (game.gameStarted && !game.gameOver) {
                 kimInventory.selectedRocket.use();
             } else if (!game.gameStarted) {
-                Interface.createPopup('Not so fast! Press <b>Start Game</b> firts :D', 'info');
+                Interface.createPopup({
+                    text: 'Not so fast! Press <b>Start Game</b> firts :D',
+                    color: 'info'
+                });
             } else if (game.gameOver) {
-                Interface.createPopup('Kimmy, calm down!\n<b>Game</b> is already <b>over</b>! :D', 'success', 0);
+                Interface.createPopup({
+                    text: 'Kimmy, calm down!\n<b>Game</b> is already <b>over</b>! :D',
+                    color: 'success'
+                });
             }
         });
     }

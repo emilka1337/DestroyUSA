@@ -63,7 +63,12 @@ export default class Rocket {                       // Базовый класс
             Interface.changeRocketCountInStore(relativeBuyButton, this.count);
             this.select();
         } catch {
-            Interface.createPopup(`Not enough <b>money</b> to buy this weaphon! You need at least <b>${this.price}$</b>`, 'info', 3500);
+            // Interface.createPopup(`Not enough <b>money</b> to buy this weaphon! You need at least <b>${this.price}$</b>`, 'info', 3500);
+            Interface.createPopup({
+                text: `Not enough <b>money</b> to buy this weaphon! You need at least <b>${this.price}$</b>`,
+                color: 'info',
+                timeout: 3500
+            });
         }
     }
 
@@ -96,17 +101,30 @@ export default class Rocket {                       // Базовый класс
                 /*Расчёт урона окончен*/
 
                 Interface.changeTrumpHP(trump.health);
-                Interface.createPopup(`<b>Trump: </b>${TrumpPhrases.GenerateAngerPhrase()}`, 'danger');
+                // Interface.createPopup(`<b>Trump: </b>${TrumpPhrases.GenerateAngerPhrase()}`, 'danger');
+                Interface.createPopup({
+                    text: `<b>Trump: </b>${TrumpPhrases.GenerateAngerPhrase()}`,
+                    color: 'danger',
+                });
                 game.checkGameStatus();
 
                 return true;
             } else {
-                Interface.createPopup(`<b>Trump: </b>${TrumpPhrases.GenerateHappyPhrase()}`, 'danger');
+                // Interface.createPopup(`<b>Trump: </b>${TrumpPhrases.GenerateHappyPhrase()}`, 'danger');
+                Interface.createPopup({
+                    text: `<b>Trump: </b>${TrumpPhrases.GenerateHappyPhrase()}`,
+                    imgSrc: 'img/popup/TrumpHappy.jpg',
+                    color: 'danger'
+                });
                 return false;
             }
         }
         catch {
-            Interface.createPopup('You have <b>NO</b> that type of rockets!', 'info');
+            // Interface.createPopup('You have <b>NO</b> that type of rockets!', 'info');
+            Interface.createPopup({
+                text: 'You have <b>NO</b> that type of rockets!',
+                color: 'info',
+            });
             return false;
         }
     }

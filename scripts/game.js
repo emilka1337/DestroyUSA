@@ -37,15 +37,27 @@ export default class Game {
 
     _checkForWin() {
         if (trump.health <= 0) {
-            for (let i = 0; i < 5; i++) Interface.createPopup("<b>CONGRATULATIONS!!! USA HAS BEEN SUCCESSFULLY DESTROYED!!!</b>", 'success', 0);
-            this._endGame();
+            for (let i = 0; i < 3; i++) {
+                Interface.createPopup({
+                    color: 'success',
+                    text: "<b>CONGRATULATIONS!!! USA HAS BEEN SUCCESSFULLY DESTROYED!!!</b>",
+                    imgSrc: 'img/popup/Rena.jpg',
+                    timeout: 0
+                });
+            }
+
+            // this._endGame();
         }
     }
 
     _checkForLose() {
         if (kim.health <= 0) {
-            Interface.createPopup("Shit... You lost this war...", 'danger', 0);
-            this._endGame();
+            Interface.createPopup({
+                color: 'danger',
+                text: "Shit... You lost this war...",
+                timeout: 0
+            });
+            // this._endGame();
         }
     }
 
@@ -54,14 +66,14 @@ export default class Game {
         this._checkForLose();
     }
 
-    _endGame() {
-        this.gameOver = true;
+    // _endGame() {
+    //     this.gameOver = true;
 
-        setTimeout(() => {
-            kim = null;
-            trump = null;
-            kimInventory = null;
-            trumpInventory = null;
-        }, 3000);
-    }
+    //     setTimeout(() => {
+    //         kim = null;
+    //         trump = null;
+    //         kimInventory = null;
+    //         trumpInventory = null;
+    //     }, 3000);
+    // }
 }
