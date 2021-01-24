@@ -2,8 +2,9 @@
 
 import { game, kim, kimInventory, trump } from "../..";
 import Interface from "../../interface";
+import Methods from "../../methods";
 
-import TrumpPhrases from "../../trumpPhrases/trumpPhrases";
+import TrumpReactions from "../../trumpReactions/trumpReactions";
 
 export default class Rocket {                       // Базовый класс для всех типов бомб и ракет
     constructor(rocket = {}) {
@@ -101,19 +102,20 @@ export default class Rocket {                       // Базовый класс
                 /*Расчёт урона окончен*/
 
                 Interface.changeTrumpHP(trump.health);
-                // Interface.createPopup(`<b>Trump: </b>${TrumpPhrases.GenerateAngerPhrase()}`, 'danger');
+                // Interface.createPopup(`<b>Trump: </b>${TrumpReactions.GenerateAngerPhrase()}`, 'danger');
                 Interface.createPopup({
-                    text: `<b>Trump: </b>${TrumpPhrases.GenerateAngerPhrase()}`,
-                    color: 'danger',
+                    text: `<b>Trump: </b>${TrumpReactions.GenerateAngryPhrase()}`,
+                    imgSrc: TrumpReactions.generateAngryPhoto(),
+                    color: 'danger'
                 });
                 game.checkGameStatus();
 
                 return true;
             } else {
-                // Interface.createPopup(`<b>Trump: </b>${TrumpPhrases.GenerateHappyPhrase()}`, 'danger');
+                // Interface.createPopup(`<b>Trump: </b>${TrumpReactions.GenerateHappyPhrase()}`, 'danger');
                 Interface.createPopup({
-                    text: `<b>Trump: </b>${TrumpPhrases.GenerateHappyPhrase()}`,
-                    imgSrc: 'img/popup/TrumpHappy.jpg',
+                    text: `<b>Trump: </b>${TrumpReactions.GenerateHappyPhrase()}`,
+                    imgSrc: TrumpReactions.generateHappyPhoto(),
                     color: 'danger'
                 });
                 return false;

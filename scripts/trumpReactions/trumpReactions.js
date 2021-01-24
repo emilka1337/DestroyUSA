@@ -2,8 +2,8 @@
 
 import Methods from "../methods";
 
-export default class TrumpPhrases {
-    static GenerateAngerPhrase() {
+export default class TrumpReactions {
+    static GenerateAngryPhrase() {
         let anger = [
             "HOOOLY SHIT!!!",
             "FUCK YOU, KIMMY! YOU'RE REALLY ASSHOLE",
@@ -26,5 +26,13 @@ export default class TrumpPhrases {
             "SUCK MY DICK, KIM! HAHAHA"
         ];
         return (happy[Methods.Random(0, happy.length)]);
+    }
+
+    static generateHappyPhoto() {
+        return `img/popup/trump_happy/TrumpHappy${Methods.Random(1, 9)}.jpg`;
+    }
+
+    static generateAngryPhoto() {
+        return `img/popup/trump_angry/TrumpAngry${Methods.Random(1, 9)}.jpg`;
     }
 }
