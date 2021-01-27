@@ -102,7 +102,6 @@ export default class Rocket {                       // Базовый класс
                 /*Расчёт урона окончен*/
 
                 Interface.changeTrumpHP(trump.health);
-                // Interface.createPopup(`<b>Trump: </b>${TrumpReactions.GenerateAngerPhrase()}`, 'danger');
                 Interface.createPopup({
                     text: `<b>Trump: </b>${TrumpReactions.GenerateAngryPhrase()}`,
                     imgSrc: TrumpReactions.generateAngryPhoto(),
@@ -112,7 +111,6 @@ export default class Rocket {                       // Базовый класс
 
                 return true;
             } else {
-                // Interface.createPopup(`<b>Trump: </b>${TrumpReactions.GenerateHappyPhrase()}`, 'danger');
                 Interface.createPopup({
                     text: `<b>Trump: </b>${TrumpReactions.GenerateHappyPhrase()}`,
                     imgSrc: TrumpReactions.generateHappyPhoto(),
@@ -122,7 +120,6 @@ export default class Rocket {                       // Базовый класс
             }
         }
         catch {
-            // Interface.createPopup('You have <b>NO</b> that type of rockets!', 'info');
             Interface.createPopup({
                 text: 'You have <b>NO</b> that type of rockets!',
                 color: 'info',

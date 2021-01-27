@@ -4,7 +4,6 @@ import Rocket from "./rocketClass/rocket";
 
 export default class BigNuclearBomb extends Rocket {
     constructor(count) {
-        // super(10, 1e5, 0.9, "Big Nuclear Bomb", "Really BIG nuclear bomb, like Kimmy's dick", "./img/rockets/BigNuclearBomb.jpg");
         super({
             damage: 10,
             price: 1e5,

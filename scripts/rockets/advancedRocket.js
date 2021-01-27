@@ -4,7 +4,6 @@ import Rocket from "./rocketClass/rocket";
 
 export default class AdvancedRocket extends Rocket {
     constructor(count) {
-        // super(3, 3000, 0.4, 'Advanced Rocket', 'Advanced Rocket to fuck Trump\'s ass', './img/rockets/AdvancedRocket.png');
         super({
             damage: 3,
             price: 3000,

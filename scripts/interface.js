@@ -186,7 +186,7 @@ export default class Interface {    // Работа с интерфейсом и
     //#region Notifications and Popups
     static createPopup(params = { text, color, imgWidth, imgSrc, timeout }) {
 
-        let popup = {
+        let popup = {               // Default popup params
             color: 'info',
             text: '',
             imgSrc: '',
@@ -194,7 +194,7 @@ export default class Interface {    // Работа с интерфейсом и
             timeout: 3000
         };
 
-        Object.assign(popup, params);
+        Object.assign(popup, params);   // Modifying default popup by user setted params
 
         let alert = document.createElement('div');
         alert.className = `alert alert-${popup.color} alert-dismissible fade show`;
@@ -202,7 +202,6 @@ export default class Interface {    // Работа с интерфейсом и
         alert.style.transition = '200ms';
 
         let div = document.createElement('div');
-        // div.className = 'd-flex';
 
         let p = document.createElement('p');
         p.innerHTML = popup.text;
@@ -225,6 +224,8 @@ export default class Interface {    // Работа с интерфейсом и
         let span = document.createElement('span');
         span.innerHTML = '&times;';
         span.setAttribute('aria-hidden', 'true');
+
+        alert.oncontextmenu = () => { close.click(); return false };
 
         alert.appendChild(div);
         div.appendChild(p);
