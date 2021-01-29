@@ -7,12 +7,12 @@ import AddEventListener from './eventListeners';
 import Player from './players/player';
 import Interface from './interface';
 
-let game = new Game();
+const game = new Game();
 
-let kimInventory = new Inventory("Kim");
-let trumpInventory = new Inventory("Trump");
+const kimInventory = new Inventory("Kim");
+const trumpInventory = new Inventory("Trump");
 
-let kim = new Player({
+const kim = new Player({
     name: "Kim", 
     money: 1e8, 
     score: 0, 
@@ -20,7 +20,7 @@ let kim = new Player({
     defence: 0,
     inventory: kimInventory
 });
-let trump = new Player({
+const trump = new Player({
     name: "Trump", 
     money: 1e6, 
     score: 0, 
@@ -33,6 +33,9 @@ console.log(kim);
 console.log(trump);
 console.log(kimInventory);
 console.log(trumpInventory);
+
+console.log(kim.constructor.name);
+console.dir(kim);
 
 export { game, kim, trump, kimInventory, trumpInventory }
 

@@ -12,7 +12,7 @@ import UndefinedRocket from './rockets/undefinedRocket';
 export default class Inventory {                    // Класс основного инвентаря игры
     constructor(name) {
         this._name = name;
-        this._rockets = {
+        this.rockets = {
             simpleRocket: new SimpleRocket(5),      // В скобках число указывает количество оборудования у игрока на старте игры
             advancedRocket: new AdvancedRocket(1),
             smallNuclearBomb: new SmallNuclearBomb(0),
