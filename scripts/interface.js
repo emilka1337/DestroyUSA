@@ -80,7 +80,6 @@ export default class Interface {    // Работа с интерфейсом и
         let card = document.createElement('div');
         card.className = 'card my-3';
         card.style.width = '18rem';
-        // card.id = rocket.inventoryId;
 
         let img = document.createElement('img');
         img.src = rocket.imgSrc;
@@ -124,7 +123,10 @@ export default class Interface {    // Работа с интерфейсом и
         buyButton.className = 'btn btn-primary col-md-5';
         buyButton.innerText = `${rocket.price}$`;
         buyButton.style.color = '#fff';
-        buyButton.onclick = () => rocket.buy(buyButton);
+        // buyButton.onclick = () => rocket.buy(buyButton);
+        // console.log(this);
+        // buyButton.onclick = () => rocket.buy.call(buyButton);
+        buyButton.onclick = () => rocket.buy(youHave);
 
         let selectButton = document.createElement('a');
         selectButton.className = 'btn btn-danger col-md-5';
@@ -135,7 +137,9 @@ export default class Interface {    // Работа с интерфейсом и
         /* Задаёт свойство со ссылкой на Node-елемент кнопки выбора ракеты и служит для того, 
         чтобы относительно неё находить путь до пункта с количеством 
         в карточке ракеты в магазине. ЖЕСТОКИЙ КОСТЫЛЬ, ИСПРАВИТЬ!!!*/
-        rocket.relativeSelectButton = selectButton;
+        // UPD: ИСПРАВЛЕНО, НА ИСПЫТАТЕЛЬНОМ СРОКЕ!!!
+        // rocket.relativeSelectButton = selectButton;
+        rocket.rocketCountInInventory = youHave;
         // console.log(rocket);
 
         card.appendChild(img);
@@ -174,8 +178,10 @@ export default class Interface {    // Работа с интерфейсом и
 
     /* Метод, меняющий количество ракет в карточке. 
     Ищет поле с количеством, отталкиваясь от кнопки "Buy" в карточке */
-    static changeRocketCountInStore(buyButton, count) {
-        buyButton.parentElement.parentElement.children[4].innerHTML = `<b>You have: </b> ${count}`;
+    // UPD: ИСПРАВЛЕНО, НА ИСПЫТАТЕЛЬНОМ СРОКЕ!!!
+    static changeRocketCountInStore(youHave, count) {
+        // buyButton.parentElement.parentElement.children[4].innerHTML = `<b>You have: </b> ${count}`;
+        youHave.innerHTML = `<b>You have: </b> ${count}`;
     }
 
     static changeSelectedRocket(title, count) {
@@ -282,6 +288,18 @@ export default class Interface {    // Работа с интерфейсом и
     //#endregion
 
     //#region Color scheme
+    _getAllTextElementsForChangingColorScheme() {
+        let tagNames = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'label']
+        let allItems = [];
+
+        for (let tagname of tagNames) {
+            allitems = Array.prototype.concat.apply(allitems, x.getElementsByTagName(tagname));
+        }
+        // allitems = Array.prototype.concat.apply(allitems, x.getElementsByTagName("h1"));
+
+        return allItems;
+    }
+
     static setDarkColorScheme() {
 
     }

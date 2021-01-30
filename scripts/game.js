@@ -1,6 +1,6 @@
 'use strict';
 
-import { kim, trump } from ".";
+import { kim, trump, kimBuildings, trumpBuildings } from ".";
 import Interface from "./interface";
 import Progress from './progress';
 
@@ -33,7 +33,11 @@ export default class Game {
         setInterval(() => {
             kim.processIncome();
             trump.processIncome();
-        }, 1000)
+        }, 1000);
+
+        setInterval(() => {
+            kimBuildings.owner.smallHospital.processRegeneration();
+        }, 1000);
 
         // Progress.autoSaveGame(10000);
         this._checkForAutosaveEnabled();

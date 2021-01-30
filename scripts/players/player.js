@@ -3,14 +3,16 @@
 import Interface from "../interface";
 
 export default class Player {
-    constructor(player) {
-        this._name = player.name || "Unknown Player";
+    constructor(player = {nickname, health, money, score, income, defence, inventory, buildings}) {
+        this._name = player.nickname || "Unknown Player";
         this._health = player.health || 100;
         this._money = player.money || 1e6;
         this._score = player.score || 0;
         this._income = player.income || 100;
         this._defence = player.defence || 0;
         this.inventory = player.inventory;
+        this.buildings = player.buildings;
+        this._maxHealth = 100;
     }
 
     //#region Getters and Setters
@@ -76,6 +78,30 @@ export default class Player {
         } else {
             // throw new Error("Health can't be less than 0");
             this._health = 0;
+        }
+    }
+
+    get maxHealth() {
+        return this._maxHealth;
+    }
+
+    set maxHealth(value) {
+        if (value >= 0 && typeof (value) == 'number') {
+            this._maxHealth = value;
+        } else {
+            throw new Error("Incorrect maxHealth value");
+        }
+    }
+
+    get regeneration() {
+        return this._regeneration;
+    }
+
+    set regeneration(value) {
+        if (value >= 0 && typeof (value) == 'number') {
+            this._regeneration = value;
+        } else {
+            throw new Error("Incorrect regeneration value");
         }
     }
     //#endregion

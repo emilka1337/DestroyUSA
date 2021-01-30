@@ -7,6 +7,7 @@ import AddEventListener from './eventListeners';
 import Player from './players/player';
 import Interface from './interface';
 import Settings from './settings';
+import PlayerBuildings from './playerBuildngs';
 
 const settings = new Settings({
     darkColorScheme: true,
@@ -25,16 +26,21 @@ const kim = new Player({
     score: 0, 
     health: 100, 
     defence: 0,
-    inventory: kimInventory
+    inventory: kimInventory,
+    // buildings: kimBuildings
 });
 const trump = new Player({
-    name: "Trump", 
+    nickname: "Trump", 
     money: 1e6, 
     score: 0, 
     health: 100, 
     defence: 0,
-    inventory: trumpInventory
+    inventory: trumpInventory,
+    // buildings: trumpBuildings
 });
+
+const kimBuildings = new PlayerBuildings(kim);
+const trumpBuildings = new PlayerBuildings(trump);
 
 console.log(kim);
 console.log(trump);
@@ -43,7 +49,7 @@ console.log(trumpInventory);
 
 // console.log(kim.constructor.name);
 
-export { game, kim, trump, kimInventory, trumpInventory, settings }
+export { game, kim, trump, kimInventory, trumpInventory, kimBuildings, trumpBuildings, settings }
 
 Interface.changeSelectedRocket(kimInventory.selectedRocket.title, kimInventory.selectedRocket.count);
 

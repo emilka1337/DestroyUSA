@@ -55,16 +55,14 @@ export default class Rocket {                       // Базовый класс
     }
     //#endregion
 
-    buy(relativeBuyButton) {
+    buy(youHave) {
         try {
             kim.money -= this.price;
             Interface.displayMoney(kim.money);
             this.count += 1;
-            console.log(this);
-            Interface.changeRocketCountInStore(relativeBuyButton, this.count);
+            Interface.changeRocketCountInStore(youHave, this.count);
             this.select();
         } catch {
-            // Interface.createPopup(`Not enough <b>money</b> to buy this weaphon! You need at least <b>${this.price}$</b>`, 'info', 3500);
             Interface.createPopup({
                 text: `Not enough <b>money</b> to buy this weaphon! You need at least <b>${this.price}$</b>`,
                 color: 'info',
@@ -76,9 +74,8 @@ export default class Rocket {                       // Базовый класс
     use() {                                               // ПОКА МЕТОД МОЖЕТ УМЕНЬШАТЬ ТОЛЬКО ЗДОРОВЬЕ ТРАМПА!!!!
         try {
             this.count -= 1;
-            console.log(this);
 
-            Interface.changeRocketCountInStore(this.relativeSelectButton, this.count);
+            Interface.changeRocketCountInStore(this.rocketCountInInventory, this.count);
             Interface.changeSelectedRocket(this.title, this.count);
 
             if (Math.random() < this.accuracy) {
@@ -105,7 +102,7 @@ export default class Rocket {                       // Базовый класс
                 Interface.createPopup({
                     text: `<b>Trump: </b>${TrumpReactions.GenerateAngryPhrase()}`,
                     imgSrc: TrumpReactions.generateAngryPhoto(),
-                    color: 'danger'
+                    color: 'success'
                 });
                 game.checkGameStatus();
 
@@ -131,6 +128,5 @@ export default class Rocket {                       // Базовый класс
     select() {
         kimInventory.selectedRocket = this;
         Interface.changeSelectedRocket(this.title, this.count);
-        console.log(this);
     }
 }
