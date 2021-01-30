@@ -6,8 +6,15 @@ import Inventory from './inventory';
 import AddEventListener from './eventListeners';
 import Player from './players/player';
 import Interface from './interface';
+import Settings from './settings';
 
-const game = new Game();
+const settings = new Settings({
+    darkColorScheme: true,
+    animations: true,
+    autosave: true,
+    autoload: true
+});
+const game = new Game(settings);
 
 const kimInventory = new Inventory("Kim");
 const trumpInventory = new Inventory("Trump");
@@ -34,10 +41,9 @@ console.log(trump);
 console.log(kimInventory);
 console.log(trumpInventory);
 
-console.log(kim.constructor.name);
-console.dir(kim);
+// console.log(kim.constructor.name);
 
-export { game, kim, trump, kimInventory, trumpInventory }
+export { game, kim, trump, kimInventory, trumpInventory, settings }
 
 Interface.changeSelectedRocket(kimInventory.selectedRocket.title, kimInventory.selectedRocket.count);
 

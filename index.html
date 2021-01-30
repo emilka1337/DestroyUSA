@@ -168,6 +168,25 @@
             </main>
         </div>
 
+        <div id="settingsContainer" class="container col-md-3 bg-dark text-light border border-white rounded shadow-lg" hidden>
+            <div class="d-flex my-2">
+                <div class="col-md-6">Color scheme</div>
+                <div class="col-md-6 d-flex justify-content-end"><button id="colorSchemeSettingButton" class="btn btn-primary disabled">Color</button></div>
+            </div>
+            <div class="d-flex my-2">
+                <div class="col-md-6">Animations</div>
+                <div class="col-md-6 d-flex justify-content-end"><button id="animationsSettingButton" class="btn btn-primary disabled">Anim</button></div>
+            </div>
+            <div class="d-flex my-2">
+                <div class="col-md-6">Autosave</div>
+                <div class="col-md-6 d-flex justify-content-end"><button id="autosaveSettingButton" class="btn btn-primary">Autosave</button></div>
+            </div>
+            <div class="d-flex my-2">
+                <div class="col-md-6">Autoload</div>
+                <div class="col-md-6 d-flex justify-content-end"><button id="autoloadSettingButton" class="btn btn-primary">Autoload</button></div>
+            </div>
+        </div>
+
         <footer id="siteFooter" class="row">
             <div class="container-fluid d-flex justify-content-end ">
                 <div id="footerButtons" class="col-md-6 d-flex justify-content-end align-items-end px-0">
@@ -177,8 +196,10 @@
             </div>
         </footer>
 
-        <div id="alertContainer" class="d-flex flex-column w-25">
-            <!-- Popups will appear here -->
+        <div id="popupsContainer" class=" w-25">
+            <div id="popups" class="d-flex flex-column">
+                <!-- Popups will appear here -->
+            </div>
         </div>
     </div>
 </body>

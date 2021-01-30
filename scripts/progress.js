@@ -1,5 +1,5 @@
 'use strict';
-import { game } from './index';
+import { game, settings } from './index';
 
 export default class Progress {
     static saveGame() {
@@ -12,7 +12,11 @@ export default class Progress {
     }
 
     static autoSaveGame(milliseconds) {
-        setInterval(this.saveGame, milliseconds);
+        setInterval(() => {
+            if (settings.autosave) {
+                this.saveGame()
+            }
+        }, milliseconds);
     }
 
     static autoLoadGame() {

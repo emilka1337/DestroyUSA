@@ -1,5 +1,5 @@
 'use strict';
-import { game, kimInventory } from './index';
+import { game, kimInventory, settings } from './index';
 import Interface from './interface';
 
 export default class AddEventListener {
@@ -9,6 +9,7 @@ export default class AddEventListener {
         this.ToLaunchButton();
         this.ToToggleInventoryButton();
         this.ToCloseInventoryButton();
+        this.ToSettingsButton();
     }
 
     static ToStartButton() {
@@ -48,4 +49,14 @@ export default class AddEventListener {
     static ToCloseInventoryButton() {
         document.getElementById('closeInventoryTab').addEventListener('click', () => Interface.hideInventory());
     }
+
+    //#region Settings
+    static ToSettingsButton() {
+        document.getElementById('settingsButton').addEventListener('click', () => Interface.toggleSettings());
+    }
+
+    static ToColorSchemeButton() {
+        settings.colorScheme = !settings.colorScheme;
+    }
+    //#endregion
 }

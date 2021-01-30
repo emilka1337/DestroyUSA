@@ -1,11 +1,12 @@
 'use strict';
 
-import { kim, kimInventory, trump, trumpInventory } from ".";
+import { kim, trump } from ".";
 import Interface from "./interface";
 import Progress from './progress';
 
 export default class Game {
-    constructor() {
+    constructor(settings) {
+        this._settings = settings;
         this.gameStarted = false;
         this.gameOver = false;
     }
@@ -13,7 +14,9 @@ export default class Game {
     startGame() {
         this.gameStarted = true;
 
-        // Progress.autoLoadGame();
+        if (this._settings.autoload) {
+            // Progress.autoLoadGame();
+        }
 
         Interface.hideStartButton();
         Interface.reduceHeaderHeightOnStart();
@@ -33,6 +36,7 @@ export default class Game {
         }, 1000)
 
         // Progress.autoSaveGame(10000);
+        this._checkForAutosaveEnabled();
     }
 
     _checkForWin() {
@@ -45,8 +49,6 @@ export default class Game {
                     timeout: 0
                 });
             }
-
-            // this._endGame();
         }
     }
 
@@ -57,7 +59,6 @@ export default class Game {
                 text: "Shit... You lost this war...",
                 timeout: 0
             });
-            // this._endGame();
         }
     }
 
@@ -66,14 +67,13 @@ export default class Game {
         this._checkForLose();
     }
 
-    // _endGame() {
-    //     this.gameOver = true;
-
-    //     setTimeout(() => {
-    //         kim = null;
-    //         trump = null;
-    //         kimInventory = null;
-    //         trumpInventory = null;
-    //     }, 3000);
-    // }
+    _checkForAutosaveEnabled() {
+        if (!this._settings.autosave) {
+            Interface.createPopup({
+                text: '<b>Notice:</b> Autosave is turned off!',
+                color: 'info',
+                timeout: 5000
+            });
+        }
+    }
 }

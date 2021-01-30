@@ -268,10 +268,30 @@ export default class Interface {    // Работа с интерфейсом и
 
         // 
 
-        document.getElementById('alertContainer').appendChild(alert);
+        document.getElementById('popups').prepend(alert);
 
         // Если дать в параметрах таймаут 0, то попап будет 'бесконечным', а если не дать ничего, то 3 секунды
         setTimeout(() => close.click(), popup.timeout || 3600000);
+    }
+    //#endregion
+
+    //#region Settings Menu
+    static toggleSettings() {
+        document.getElementById('settingsContainer').hidden = !document.getElementById('settingsContainer').hidden;
+    }
+    //#endregion
+
+    //#region Color scheme
+    static setDarkColorScheme() {
+
+    }
+
+    static setLightColorScheme() {
+
+    }
+
+    static setColorScheme(colorScheme) {
+        
     }
     //#endregion
 }
