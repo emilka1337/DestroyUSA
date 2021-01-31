@@ -3,20 +3,21 @@
 import Interface from "../interface";
 
 export default class Player {
-    constructor(player = {nickname, health, money, score, income, defence, inventory, buildings}) {
-        this._name = player.nickname || "Unknown Player";
+    constructor(player = {nickname, health, money, score, income, defence, inventory, buildings, regeneration}) {
+        this._nickname = player.nickname || "Unknown Player";
         this._health = player.health || 100;
         this._money = player.money || 1e6;
         this._score = player.score || 0;
         this._income = player.income || 100;
         this._defence = player.defence || 0;
+        this._regeneration = player.regeneration || 0;
         this.inventory = player.inventory;
         this.buildings = player.buildings;
         this._maxHealth = 100;
     }
 
     //#region Getters and Setters
-    get name() {
+    get nickname() {
         return this._name;
     }
 

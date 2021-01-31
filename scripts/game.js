@@ -35,8 +35,15 @@ export default class Game {
             trump.processIncome();
         }, 1000);
 
+        kimBuildings.hospitals.smallHospital.build();
+        kimBuildings.hospitals.mediumHospital.build();
+        kimBuildings.hospitals.bigHospital.build();
+        kimBuildings.hospitals.bigHospital.build();
+        kimBuildings.hospitals.bigHospital.build();
+
         setInterval(() => {
-            kimBuildings.owner.smallHospital.processRegeneration();
+            kimBuildings.hospitals.smallHospital.processRegeneration();
+            trumpBuildings.hospitals.smallHospital.processRegeneration();
         }, 1000);
 
         // Progress.autoSaveGame(10000);

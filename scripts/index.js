@@ -21,7 +21,7 @@ const kimInventory = new Inventory("Kim");
 const trumpInventory = new Inventory("Trump");
 
 const kim = new Player({
-    name: "Kim", 
+    nickname: "Kim", 
     money: 1e8, 
     score: 0, 
     health: 100, 
@@ -41,6 +41,9 @@ const trump = new Player({
 
 const kimBuildings = new PlayerBuildings(kim);
 const trumpBuildings = new PlayerBuildings(trump);
+
+kim.buildings = kimBuildings;
+trump.buildings = trumpBuildings;
 
 console.log(kim);
 console.log(trump);
