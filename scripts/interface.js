@@ -205,12 +205,8 @@ export default class Interface {    // Работа с интерфейсом и
         let alert = document.createElement('div');
         alert.className = `alert alert-${popup.color} alert-dismissible fade show`;
         alert.id = 'noRocketsAlert';
-        alert.style.transition = '200ms';
-        /* Для анимации попапа */
-        alert.style.position = 'absolute';
-        alert.style.left = '-400px';
-        alert.style.top = '-100px';
-        /* Для анимации попапа */
+        alert.style.transition = '300ms';
+        alert.style.opacity = '0';
 
         let div = document.createElement('div');
 
@@ -244,37 +240,9 @@ export default class Interface {    // Работа с интерфейсом и
         alert.appendChild(close);
         close.appendChild(span);
 
-        setTimeout(function () {                        // ДОДЕЛАТЬ АНИМАЦИИ
-            alert.style.left = '0px';
-            setTimeout(function () {
-                alert.style.transition = '0ms';
-                alert.style.top = '0px';
-                alert.style.position = 'static';
-            }, 100);
-        }, 100);
-
-        // setTimeout(function () {                     // Более-менее рабочая анимация
-        //     alert.style.left = '0px';
-        //     setTimeout(function () {
-        //         alert.style.transition = '0ms';
-        //         alert.style.top = '0px';
-        //         alert.style.position = '';
-        //     }, 100);
-        // }, 100);
-
-
-        // let animation = new Promise((resolve, reject) => {
-
-        //     setTimeout(() => {
-        //         resolve();
-        //     }, 200);
-        // }).then(() => alert.style.position = 'static');
-
-        // alert.style.left = '0px';
-
-        // 
-
         document.getElementById('popups').prepend(alert);
+        setTimeout(() => alert.style.opacity = '1', 0);
+        // document.getElementById('popups').appendChild(alert);
 
         // Если дать в параметрах таймаут 0, то попап будет 'бесконечным', а если не дать ничего, то 3 секунды
         setTimeout(() => close.click(), popup.timeout || 3600000);
@@ -313,6 +281,3 @@ export default class Interface {    // Работа с интерфейсом и
     }
     //#endregion
 }
-
-// transition: all 200ms ease 0s; position: absolute; left: 0px; top: -100px;
-// transition: all 0ms ease 0s; left: 0px; top: 0px;

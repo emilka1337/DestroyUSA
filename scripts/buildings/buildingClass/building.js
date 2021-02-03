@@ -4,10 +4,10 @@ import Interface from "../../interface";
 
 export default class Building {
     constructor() {             // время постройки будет основано на Promise
-        this._name;
-        this._price;
-        this._buildTimeInMs;
-        this._count;
+        this._name = 'Undefined building';
+        this._price = 0;
+        this._buildTimeInMs = 0;
+        this._count = 0;
         this.owner;
     }
 
@@ -46,48 +46,64 @@ export default class Building {
         return this._count;
     }
 
+    set count(value) {
+        if (value >= 0 && typeof (value) == 'number') {
+            this._count = value;
+        } else {
+            throw new Error("Incorrect Buildings count value");
+        }
+    }
+
     get name() {
         return this._name;
     }
     //#endregion
 
     build(callback) {
-        Interface.createPopup({
-            text: `Building of <b>${this._name}</b> has started. Please, wait ${this.buildTimeInMinutes} minutes...`,
-            timeout: 4000
-        });
+        try {
+            this.owner.money -= this.price;
 
-        console.log(this._buildTimeInMs);
+            Interface.createPopup({
+                text: `Building of <b>${this.name}</b> for player <b>${this.owner.nickname}</b> has started. Please, wait ${this.buildTimeInMinutes} minutes...`,
+                timeout: 4000
+            });
 
-        let buildProcess = new Promise(
-            (resolve) => {
-                setTimeout(
-                    () => {
-                        this._count += 1;
-                        callback();
-                        resolve();
-                    },
-                    this._buildTimeInMs
-                );
-            }
-        );
+            console.log(this._buildTimeInMs);
 
-        buildProcess.then(() => Interface.createPopup({
-            text: `Building of <b>${this._name}</b> successfully completed!`,
-            timeout: 5000
-        }));
+            let buildProcess = new Promise(
+                (resolve) => {
+                    setTimeout(
+                        () => {
+                            this.count += 1;
+                            callback();
+                            resolve();
+                        },
+                        this._buildTimeInMs
+                    );
+                }
+            );
+
+            buildProcess.then(() => Interface.createPopup({
+                text: `Building of <b>${this._name}</b> for player <b>${this.owner.nickname}</b> has successfully completed!`,
+                timeout: 5000
+            }));
+        } catch {
+            Interface.createPopup({
+                text: "Not enough <b>money</b> to build this building"
+            });
+        }
     }
 
-    demolish() {
+    demolish(callback) {
         try {
             this.count -= 1;
             Interface.createPopup({
                 text: `${this._name} has been demolished!`
             })
+            callback();
         } catch {
             Interface.createPopup({
-                text: "Nothing to demolish yet!",
-                color: 'info'
+                text: "Nothing to demolish yet!"
             });
         }
     }

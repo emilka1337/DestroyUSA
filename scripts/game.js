@@ -1,6 +1,6 @@
 'use strict';
 
-import { kim, trump, kimBuildings, trumpBuildings } from ".";
+import { kim, trump, kimBuildings, trumpBuildings, kimInventory } from ".";
 import Interface from "./interface";
 import Progress from './progress';
 
@@ -30,24 +30,36 @@ export default class Game {
 
         Interface.fullfillRocketsInventory();
 
-        setInterval(() => {
-            kim.processIncome();
-            trump.processIncome();
-        }, 1000);
+        this._startIncoming();
 
         kimBuildings.hospitals.smallHospital.build();
         kimBuildings.hospitals.mediumHospital.build();
         kimBuildings.hospitals.bigHospital.build();
-        kimBuildings.hospitals.bigHospital.build();
-        kimBuildings.hospitals.bigHospital.build();
+        // trumpBuildings.hospitals.smallHospital.build();
+        // trumpBuildings.hospitals.mediumHospital.build();
+        // trumpBuildings.hospitals.bigHospital.build();
 
+        this._startRegeneration();
+
+        if (this._settings.autosave) {
+            // Progress.autoSaveGame(10000);
+        }
+        this._checkForAutosaveEnabled();
+    }
+
+    _startIncoming() {
+        setInterval(() => {
+            kim.processIncome();
+            trump.processIncome();
+        }, 1000);
+    }
+
+    _startRegeneration() {
         setInterval(() => {
             kimBuildings.hospitals.smallHospital.processRegeneration();
             trumpBuildings.hospitals.smallHospital.processRegeneration();
+            // console.log(kim);
         }, 1000);
-
-        // Progress.autoSaveGame(10000);
-        this._checkForAutosaveEnabled();
     }
 
     _checkForWin() {
@@ -73,11 +85,6 @@ export default class Game {
         }
     }
 
-    checkGameStatus() {
-        this._checkForWin();
-        this._checkForLose();
-    }
-
     _checkForAutosaveEnabled() {
         if (!this._settings.autosave) {
             Interface.createPopup({
@@ -86,5 +93,26 @@ export default class Game {
                 timeout: 5000
             });
         }
+    }
+
+    fire() {
+        if (this.gameStarted && !this.gameOver) {
+            kimInventory.selectedRocket.use();
+        } else if (!this.gameStarted) {
+            Interface.createPopup({
+                text: 'Not so fast! Press <b>Start Game</b> firts :D',
+                color: 'info'
+            });
+        } else if (this.gameOver) {
+            Interface.createPopup({
+                text: 'Kimmy, calm down!\n<b>Game</b> is already <b>over</b>! :D',
+                color: 'success'
+            });
+        }
+    }
+
+    checkGameStatus() {
+        this._checkForWin();
+        this._checkForLose();
     }
 }

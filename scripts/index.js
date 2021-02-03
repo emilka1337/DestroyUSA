@@ -22,9 +22,9 @@ const trumpInventory = new Inventory("Trump");
 
 const kim = new Player({
     nickname: "Kim", 
-    money: 1e8, 
+    money: 1e6, 
     score: 0, 
-    health: 100, 
+    health: 90, 
     defence: 0,
     inventory: kimInventory,
     // buildings: kimBuildings

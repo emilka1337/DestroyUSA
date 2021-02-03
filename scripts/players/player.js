@@ -18,7 +18,7 @@ export default class Player {
 
     //#region Getters and Setters
     get nickname() {
-        return this._name;
+        return this._nickname;
     }
 
     get income() {
@@ -74,12 +74,27 @@ export default class Player {
     }
 
     set health(value) {
+        console.log(this);
         if (value >= 0 && typeof (value) == 'number') {
+            value = +value.toFixed(2);
             this._health = value;
+            if (this._nickname == "Kim") {
+                Interface.changeKimHP(value);
+            } else {
+                Interface.changeTrumpHP(value);
+            }
         } else {
             // throw new Error("Health can't be less than 0");
             this._health = 0;
         }
+    }
+
+    get defence() {
+        return this._defence;
+    }
+
+    set defence(value) {
+        this._defence = value;
     }
 
     get maxHealth() {
@@ -108,13 +123,13 @@ export default class Player {
     //#endregion
 
     processIncome() {
-        this._money += this._income;
-        if (this._name == "Kim") {
+        this.money += this.income;
+        if (this.nickname == "Kim") {
             Interface.displayMoney(this.money);
         }
     }
 
     calculateDefence() {
-        this._defence = this.inventory.calculatePlayerDefence();
+        this.defence = this.inventory.calculatePlayerDefence();
     }
 }
